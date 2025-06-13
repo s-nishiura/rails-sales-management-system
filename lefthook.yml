@@ -18,6 +18,11 @@ pre-commit:
       run: bundle exec rubocop --autocorrect --force-exclusion {staged_files}
       stage_fixed: true
 
+    - name: erb_lint
+      glob: "*.erb"
+      run: bundle exec erb_lint --autocorrect {staged_files}
+      stage_fixed: true
+
 commit-msg:
   jobs:
     - name: commitlint
