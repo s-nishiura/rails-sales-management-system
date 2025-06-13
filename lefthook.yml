@@ -1,3 +1,8 @@
+pre-push:
+  jobs:
+    - name: rspec
+      run: bin/rspec
+
 pre-commit:
   parallel: true
   jobs:
