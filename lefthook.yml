@@ -23,6 +23,11 @@ pre-commit:
       run: bundle exec erb_lint --autocorrect {staged_files}
       stage_fixed: true
 
+    - name: biome
+      glob: "*.{js,json,jsonc,css}"
+      run: bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+
 commit-msg:
   jobs:
     - name: commitlint
