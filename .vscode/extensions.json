@@ -1,3 +1,8 @@
 {
-	"recommendations": ["biomejs.biome", "fnando.linter", "shopify.ruby-lsp"]
+	"recommendations": [
+		"biomejs.biome",
+		"editorconfig.editorconfig",
+		"fnando.linter",
+		"shopify.ruby-lsp"
+	]
 }
