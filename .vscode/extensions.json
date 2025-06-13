@@ -1,3 +1,3 @@
 {
-	"recommendations": ["biomejs.biome", "shopify.ruby-lsp"]
+	"recommendations": ["biomejs.biome", "fnando.linter", "shopify.ruby-lsp"]
 }

@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Lint code for consistent style using RuboCop
         run: bin/rubocop -f github
-      
+
       - name: Set up Biome
         uses: biomejs/setup-biome@a9763ed3d2388f5746f9dc3e1a55df7f4609bc89 # v2.5.1
         with:
@@ -44,6 +44,13 @@ jobs:
 
       - name: Lint code for consistent style using Biome
         run: biome ci .
+
+      - name: Yamllint
+        uses: karancode/yamllint-github-action@4052d365f09b8d34eb552c363d1141fd60e2aeb2 # v3.0.0
+        with:
+          yamllint_file_or_dir: .yamllint.yml
+          yamllint_strict: false
+          yamllint_comment: true
 
   test:
     runs-on: ubuntu-latest
