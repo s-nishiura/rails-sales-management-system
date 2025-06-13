@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"biomejs.biome",
+		"bradlc.vscode-tailwindcss",
 		"editorconfig.editorconfig",
 		"fnando.linter",
 		"shopify.ruby-lsp"
