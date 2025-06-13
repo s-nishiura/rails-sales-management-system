@@ -1,6 +1,9 @@
 pre-commit:
   parallel: true
   jobs:
+    - name: pinact
+      run: pinact run
+      stage_fixed: true
     - name: brakeman
       run: bundle exec brakeman --no-pager
     - name: rubocop
