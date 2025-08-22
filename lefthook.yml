@@ -1,0 +1,49 @@
+pre-push:
+  parallel: true
+  jobs:
+    - name: Backend audit
+      run: bundle audit
+
+    - name: Frontend audit
+      run: bun audit
+
+    - name: RSpec
+      run: bin/rspec
+
+    - name: brakeman
+      run: bin/brakeman --no-pager
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: Biome
+      glob: "*.{js,json}"
+      run: bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+
+    - name: Rubocop
+      glob: "*.rb"
+      run: bin/rubocop --autocorrect --force-exclusion {staged_files}
+      stage_fixed: true
+
+    - name: Erblint
+      glob: "*.erb"
+      run: bin/erb_lint --autocorrect {staged_files}
+      stage_fixed: true
+
+    - name: HTML Beautifier
+      glob: "*.html.erb"
+      run: bin/htmlbeautifier {staged_files}
+      stage_fixed: true
+
+    - name: Yaml Lint
+      glob: "*.yml"
+      run: yamllint --strict {staged_files}
+
+    - name: I18n
+      run: bin/i18n-tasks health
+
+commit-msg:
+  jobs:
+    - name: Commitlint
+      run: bunx @commitlint/cli --edit $1

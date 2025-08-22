@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&display=swap");
+@import "tailwindcss" source(none);
+@source "../../../public/*.html";
+@source "../../../app/helpers/**/*.rb";
+@source "../../../app/javascript/**/*.js";
+@source "../../../app/views/**/*";
+
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "Noto Sans JP";
+  --font-mono: "Noto Sans Mono";
+}

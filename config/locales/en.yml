@@ -1,0 +1,5 @@
+---
+en:
+  app:
+    description: A sales management system created for learning purposes.
+    title: Rails SMS
